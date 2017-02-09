@@ -6,35 +6,34 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'haml'
 gem 'inherited_resources'
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder'
 gem 'jquery-rails'
 gem 'pg'
-gem 'puma', '~> 3.0'
-gem 'rails', '~> 5.0.1'
-gem 'redis', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
+gem 'puma'
+gem 'rails', '5.0.1'
+gem 'react-rails'
+gem 'redis'
+gem 'sass-rails'
 gem 'sqlite3'
+gem 'streamio-ffmpeg'
 gem 'therubyracer', platforms: :ruby
-gem 'turbolinks', '~> 5'
-gem 'uglifier', '>= 1.3.0'
+gem 'turbolinks'
+gem 'uglifier'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'capybara-puma'
-  gem 'capybara-webkit'
   gem 'jazz_fingers', github: 'andrewfader/jazz_fingers'
-  gem 'rspec-rails'
 end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller' 
-  gem 'listen', '~> 3.0.5'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'spring-watcher-listen'
+  gem 'web-console'
+  gem 'letter_opener'
 end
