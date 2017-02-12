@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'carrierwave'
 gem 'devise'
 gem 'haml'
 gem 'inherited_resources'
@@ -17,6 +18,7 @@ gem 'rails', '5.0.1'
 gem 'react-rails'
 gem 'redis'
 gem 'sass-rails'
+gem 'simple_form'
 gem 'sqlite3'
 gem 'streamio-ffmpeg'
 gem 'therubyracer', platforms: :ruby
@@ -30,7 +32,7 @@ end
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller' 
+  gem 'binding_of_caller'
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
