@@ -26,6 +26,8 @@ gem 'streamio-ffmpeg'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 gem 'uglifier'
+gem 'sidekiq'
+gem 'streamio-ffmpeg'
 
 group :development, :test do
   gem 'byebug', platform: :mri

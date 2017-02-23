@@ -1,6 +1,6 @@
 class VideoUploader < CarrierWave::Uploader::Base
   if Rails.env.development?
-    storage :file
+  storage :file
   else
      storage :fog
   end
