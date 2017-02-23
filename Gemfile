@@ -8,6 +8,9 @@ end
 
 gem 'carrierwave'
 gem 'devise'
+gem 'dropzonejs-rails'
+gem 'excon'
+gem 'fog-aws'
 gem 'haml'
 gem 'inherited_resources'
 gem 'jbuilder'
@@ -23,7 +26,6 @@ gem 'streamio-ffmpeg'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 gem 'uglifier'
-gem 'dropzonejs-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
