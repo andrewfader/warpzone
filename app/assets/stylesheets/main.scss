@@ -1,5 +1,16 @@
 body {
+  .content {
+    margin: 5px;
+    padding: 5px;
+  }
   .topbar {
+    span.btn {
+      margin-right: 10px;
+      float: right;
+      a:link, a:visited {
+        color: white;
+      }
+    }
   }
   ul {
     width: 70vw;
@@ -11,20 +22,21 @@ body {
       margin-bottom: 25px;
       text-align: center;
       list-style: none;
+      max-width: 70vw;
+      margin: auto;
       video,.video {
-        margin: auto;
-        max-width: 70vw;
+        width: 100%;
       }
       .middlebar {
         display: block;
-        min-height: 50px;
+        min-height: 75px;
         margin-bottom: 25px;
         width: 100%;
         b {
           font-size: 1.2em;
         }
         .comments,.votes {
-          min-height: 75px;
+          min-height: 82px;
         }
         .votes {
           float: left;
@@ -32,10 +44,20 @@ body {
           }
         }
         .comments {
-          padding-top: 10px;
+          padding-top: 16px;
           float: right;
         }
       }
     }
+  }
+}
+.comment {
+  border-bottom: 1px black dashed;
+  &:last-child {
+    border-bottom: 0
+  }
+  .text {
+    font-weight: 1.4em;
+    margin-bottom: 5px;
   }
 }

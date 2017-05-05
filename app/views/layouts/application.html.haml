@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Warpzone
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .topbar.navbar.navbar-default
+      %span.logo
+        =link_to videos_path do
+          LB
+      - unless current_user
+        %span.btn.btn-primary=link_to "Sign up", new_user_registration_path
+        %span.btn.btn-primary=link_to "Log in", new_user_session_path
+      - else
+        Welcome #{current_user.email}
+    .content
+      = yield

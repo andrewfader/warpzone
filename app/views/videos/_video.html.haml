@@ -13,9 +13,7 @@
     %b= video.comments.count
     %br
     comments
-.hidden
-  = render video.comments
-  = simple_form_for Comment.new do |f|
-    =f.input :video_id, as: :hidden, input_html: { value: video.id }
-    =f.input :text
-    =f.submit
+.hidden.showcomments
+  .commentlist
+    = render video.comments
+  = render 'comments/new', video: video

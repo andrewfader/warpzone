@@ -1,10 +1,2 @@
-.topbar.navbar.navbar-default
-  LB
-  Search
-  - unless current_user
-    =link_to "Sign up", new_user_registration_path
-    =link_to "Log in", new_user_session_path
-  - else
-    Welcome #{current_user.email}
 = render "index"
 = render "new"

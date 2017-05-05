@@ -16,3 +16,8 @@
 //= require dropzone
 //= require components
 //= require_tree .
+$(document).ready(function() {
+  $('.btn.comments').on('click',function(e) {
+    $(e.target).closest('li').find('.showcomments').toggleClass('hidden');
+  });
+});
