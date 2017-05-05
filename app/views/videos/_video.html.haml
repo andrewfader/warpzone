@@ -1,0 +1,10 @@
+%video{src: video.file, controls: true}
+#{video.votes} votes
+=link_to "^",  video_upvote_path(video)
+=link_to "V", video_downvote_path(video)
+- if video.comments
+  = render video.comments
+= simple_form_for Comment.new do |f|
+  =f.input :video_id, as: :hidden, input_html: { value: video.id }
+  =f.input :text
+  =f.submit

@@ -1,5 +1,4 @@
 %ul
-  - Video.all.each do |video|
+  - Video.all.sort_by(&:votes).reverse.each do |video|
     %li
-      %video{src: video.file, controls: true}
-      =video.votes
+      = render video
