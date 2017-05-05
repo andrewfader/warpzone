@@ -17,6 +17,6 @@
       - else
         %span{style: 'float: right;'}
           Welcome #{current_user.email}
-          .btn.btn-primary=link_to "Log out", destroy_user_session_path
+          .btn.btn-primary=link_to "Log out", destroy_user_session_path, method: :delete
     .content
       = yield

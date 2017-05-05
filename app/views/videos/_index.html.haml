@@ -1,4 +1,4 @@
 %ul
-  - Video.all.sort_by(&:votes).reverse.each do |video|
+  - Video.all.sort_by(&:value).reverse.each do |video|
     %li
       = render video

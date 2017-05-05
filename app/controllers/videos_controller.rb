@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   def create
-    @video = Video.create(file: video_params[:file])
+    @video = Video.create(video_params)
     EncodeVideoJob.perform_later(@video)
     redirect_to videos_path
   end
@@ -10,25 +10,31 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:file)
+    params.require(:video).permit(:file, :user_id, :title)
   end
 
   def upvote
     self.votes= 1
-    redirect_to videos_path
   end
 
   def downvote
     self.votes= -1
-    redirect_to videos_path
   end
 
   private
 
   def votes= votes
-    video.votes ||= 0
-    video.votes = video.votes + votes
-    video.save
+    if current_user
+      if vote = Vote.find_by(user_id: current_user.id, video_id: video.id)
+        vote.value = votes
+        vote.save
+      else
+        Vote.create(user_id: current_user.id, video_id: video.id, value: votes)
+      end
+      redirect_to videos_path
+    else
+      redirect_to new_user_registration_path
+    end
   end
 
   def video

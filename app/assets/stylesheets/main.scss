@@ -34,7 +34,13 @@ body {
         margin-bottom: 25px;
         width: 100%;
         b {
-          font-size: 1.2em;
+          font-size: 1.4em;
+        }
+        b.red {
+          color: red !important;
+        }
+        .comments,.votes,.middle_content {
+          display: inline-block;
         }
         .comments,.votes {
           min-height: 82px;

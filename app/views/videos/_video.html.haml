@@ -3,12 +3,25 @@
 .middlebar
   .votes.btn.btn-default
     .nib
-      %b=link_to "▲",  video_upvote_path(video)
+      - if current_user.votes.where(video_id: video.id, value: 1).present?
+        %b.red-="▲"
+      - else
+        %b=link_to "▲",  video_upvote_path(video)
     .nib
-      %b= video.votes
+      %b= video.value
       votes
     .nib
-      %b=link_to "▼", video_downvote_path(video)
+      - if current_user.votes.where(video_id: video.id, value: -1).present?
+        .red="▼"
+      - else
+        %b=link_to "▼", video_downvote_path(video)
+  .middle_content
+    - if video. title
+      %h2=video.title
+    - else
+      %h2 Untitled
+    - if video.user_id
+      Uploaded #{time_ago_in_words(video.created_at)} ago by #{User.find(video.user_id)}
   .comments.btn.btn-default
     %b= video.comments.count
     %br

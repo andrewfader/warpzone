@@ -1,3 +1,5 @@
 = simple_form_for Video.new do |f|
   = f.input :file
+  = f.input :title
+  = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
   = f.submit
