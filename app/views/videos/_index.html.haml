@@ -1,0 +1,5 @@
+%ul
+  - Video.all.each do |video|
+    %li
+      %video{src: video.file, controls: true}
+      =video.votes
