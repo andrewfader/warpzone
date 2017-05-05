@@ -4,7 +4,8 @@ body {
     padding: 5px;
   }
   .topbar {
-    span.btn {
+    margin: 5px;
+    .btn {
       margin-right: 10px;
       float: right;
       a:link, a:visited {
@@ -57,7 +58,10 @@ body {
     border-bottom: 0
   }
   .text {
-    font-weight: 1.4em;
+    font-size: 1.4em;
     margin-bottom: 5px;
   }
+}
+.commentlist {
+  margin-bottom: 10px;
 }

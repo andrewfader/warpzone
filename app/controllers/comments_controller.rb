@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
   def create
-    user_id = current_user.try(:id) || request.ip
-    video.comments.create(comment_params.merge(user_id: user_id))
+    if current_user
+      video.comments.create(comment_params.merge(user_id: current_user.id))
+    else
+      redirect_to new_user_registration_path
+    end
+
     redirect_to videos_path
   end
 

@@ -12,12 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require dropzone
 //= require components
+//= require turbolinks
 //= require_tree .
-$(document).ready(function() {
+
+function readyDoc() {
   $('.btn.comments').on('click',function(e) {
     $(e.target).closest('li').find('.showcomments').toggleClass('hidden');
   });
+}
+
+$(document).on('turbolinks:load', function() {
+  readyDoc()
 });
+
+$(document).ready(readyDoc());
