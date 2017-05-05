@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'devise'
 gem 'dropzonejs-rails'
@@ -20,14 +21,13 @@ gem 'puma'
 gem 'rails', '5.0.1'
 gem 'redis'
 gem 'sass-rails'
+gem 'sidekiq'
 gem 'simple_form'
 gem 'sqlite3'
 gem 'streamio-ffmpeg'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 gem 'uglifier'
-gem 'sidekiq'
-gem 'streamio-ffmpeg'
 
 group :development, :test do
   gem 'byebug', platform: :mri

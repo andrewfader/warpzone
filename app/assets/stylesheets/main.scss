@@ -1,0 +1,41 @@
+body {
+  .topbar {
+  }
+  ul {
+    width: 70vw;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 25px;
+    li {
+      display: block;
+      margin-bottom: 25px;
+      text-align: center;
+      list-style: none;
+      video,.video {
+        margin: auto;
+        max-width: 70vw;
+      }
+      .middlebar {
+        display: block;
+        min-height: 50px;
+        margin-bottom: 25px;
+        width: 100%;
+        b {
+          font-size: 1.2em;
+        }
+        .comments,.votes {
+          min-height: 75px;
+        }
+        .votes {
+          float: left;
+          .nib {
+          }
+        }
+        .comments {
+          padding-top: 10px;
+          float: right;
+        }
+      }
+    }
+  }
+}

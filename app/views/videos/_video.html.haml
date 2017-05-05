@@ -1,10 +1,21 @@
-%video{src: video.file, controls: true}
-#{video.votes} votes
-=link_to "^",  video_upvote_path(video)
-=link_to "V", video_downvote_path(video)
-- if video.comments
+.video
+  %video{src: video.file, controls: true}
+.middlebar
+  .votes.btn.btn-default
+    .nib
+      %b=link_to "▲",  video_upvote_path(video)
+    .nib
+      %b= video.votes
+      votes
+    .nib
+      %b=link_to "▼", video_downvote_path(video)
+  .comments.btn.btn-default
+    %b= video.comments.count
+    %br
+    comments
+.hidden
   = render video.comments
-= simple_form_for Comment.new do |f|
-  =f.input :video_id, as: :hidden, input_html: { value: video.id }
-  =f.input :text
-  =f.submit
+  = simple_form_for Comment.new do |f|
+    =f.input :video_id, as: :hidden, input_html: { value: video.id }
+    =f.input :text
+    =f.submit
