@@ -1,5 +1,6 @@
-= simple_form_for(Video.new, html: { class: 'form-inline' }) do |f|
-  = f.input :file
-  = f.input :title
-  = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
-  = f.submit
+- if current_user
+  = simple_form_for(Video.new, html: { class: 'form-inline' }) do |f|
+    = f.input :file
+    = f.input :title
+    = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+    = f.submit

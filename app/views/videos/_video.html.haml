@@ -1,12 +1,14 @@
 .gif
   - if video.filepath
-    =image_tag "/uploads/video/file/#{video.id}/#{video.filepath}"
+    =image_tag "/uploads/video/file/#{video.id}/#{video.filepath}", id: 'gif'
+    =image_tag "b.gif", class: "blank hidden"
+
 .video.hidden
   %video{src: video.file, controls: true, disabled: true}
 .middlebar
   .votes.btn.btn-default
     .nib
-      - if current_user.votes.where(video_id: video.id, value: 1).present?
+      - if current_user && current_user.votes.where(video_id: video.id, value: 1).present?
         %b.red-="▲"
       - else
         %b=link_to "▲",  video_upvote_path(video)
@@ -14,7 +16,7 @@
       %b= video.value
       votes
     .nib
-      - if current_user.votes.where(video_id: video.id, value: -1).present?
+      - if current_user && current_user.votes.where(video_id: video.id, value: -1).present?
         .red="▼"
       - else
         %b=link_to "▼", video_downvote_path(video)

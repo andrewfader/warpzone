@@ -35,6 +35,31 @@ function readyDoc() {
     $(e.target).closest('.video').find('video')[0].pause();
     $(e.target).closest('.video').addClass('hidden');
   });
+  function gifFun() {
+    if($('.gif').length > 2) {
+      index = 0
+      $.map($('.gif'), function(gif) {
+        scrollTop = $('html').scrollTop();
+        gifTop = $(gif).offset().top - scrollTop;
+        gifBottom = gifTop + $(gif).height()
+        if (gifBottom < 0 || gifTop > $(window).height()) {
+          $(gif).find('img#gif').addClass('hidden')
+          $(gif).find('img.blank').removeClass('hidden')
+          console.log("hid " + index + gifTop + gifBottom)
+        } else {
+          $(gif).find('img#gif').removeClass('hidden')
+          $(gif).find('img.blank').addClass('hidden')
+          console.log("show " + index + gifTop + gifBottom)
+        }
+        index = index + 1
+      });
+    }
+  }
+
+  $(window).scroll(function() {
+    gifFun()
+  });
+  gifFun()
 }
 
 $(document).on('turbolinks:load', function() {
