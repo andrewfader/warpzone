@@ -35,30 +35,35 @@ function readyDoc() {
     $(e.target).closest('.video').find('video')[0].pause();
     $(e.target).closest('.video').addClass('hidden');
   });
+  var scrollTop;
   function gifFun() {
-    if($('.gif').length > 2) {
-      index = 0
-      $.map($('.gif'), function(gif) {
-        scrollTop = $('html').scrollTop();
-        gifTop = $(gif).offset().top - scrollTop;
-        gifBottom = gifTop + $(gif).height()
-        if (gifBottom < 0 || gifTop > $(window).height()) {
-          $(gif).find('img#gif').addClass('hidden')
-          $(gif).find('img.blank').removeClass('hidden')
-          console.log("hid " + index + gifTop + gifBottom)
-        } else {
-          $(gif).find('img#gif').removeClass('hidden')
-          $(gif).find('img.blank').addClass('hidden')
-          console.log("show " + index + gifTop + gifBottom)
-        }
-        index = index + 1
-      });
-    }
+    index = 0
+    $.map($('.gif'), function(gif) {
+      scrollTop = $('html').scrollTop();
+      gifTop = $(gif).offset().top - scrollTop
+      gifBottom = gifTop + $(gif).height()
+      windowBottom = scrollTop + $(window).height() + $(gif).height()
+      if (gifBottom > 0 || (gifTop > scrollTop && gifBottom < windowBottom)) {
+        $(gif).find('img#gif').removeClass('hidden')
+        $(gif).find('img.blank').addClass('hidden')
+        console.log("show " + index + "top:" + gifTop + "bottom: " + gifBottom + "sc" + scrollTop)
+      } else {
+        $(gif).find('img#gif').addClass('hidden')
+        $(gif).find('img.blank').removeClass('hidden')
+        console.log("hid " + index + "top:" + gifTop + "bottom: " + gifBottom + "wb" + windowBottom)
+      }
+      index = index + 1
+    });
   }
 
   $(window).scroll(function() {
-    gifFun()
+    if($('.gif').length > 2) {
+      if (Math.abs(scrollTop - $('html').scrollTop()) > (($('.gif').first().height() - 10)/3 - 10)) {
+        gifFun()
+      }
+    }
   });
+
   gifFun()
 }
 
