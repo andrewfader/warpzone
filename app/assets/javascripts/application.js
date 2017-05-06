@@ -21,6 +21,20 @@ function readyDoc() {
   $('.btn.comments').on('click',function(e) {
     $(e.target).closest('li').find('.showcomments').toggleClass('hidden');
   });
+
+  $('.gif').on('click',function(e) {
+    video = $(e.target).closest('li').find('.video');
+    video.removeClass('hidden');
+    $(e.target).closest('.gif').addClass('hidden');
+    setTimeout(function() { $(video).find('video')[0].play(); }, 100);
+  });
+
+  $('.video').on('click',function(e) {
+    gif = $(e.target).closest('li').find('.gif');
+    gif.removeClass('hidden');
+    $(e.target).closest('.video').find('video')[0].pause();
+    $(e.target).closest('.video').addClass('hidden');
+  });
 }
 
 $(document).on('turbolinks:load', function() {

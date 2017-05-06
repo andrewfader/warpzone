@@ -1,5 +1,8 @@
-.video
-  %video{src: video.file, controls: true}
+.gif
+  - if video.filepath
+    =image_tag "/uploads/video/file/#{video.id}/#{video.filepath}"
+.video.hidden
+  %video{src: video.file, controls: true, disabled: true}
 .middlebar
   .votes.btn.btn-default
     .nib
@@ -22,6 +25,8 @@
       %h2 Untitled
     - if video.user_id
       Uploaded #{time_ago_in_words(video.created_at)} ago by #{User.find(video.user_id)}
+    - if video.tags
+      = video.tags.join(" ")
   .comments.btn.btn-default
     %b= video.comments.count
     %br

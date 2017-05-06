@@ -1,4 +1,4 @@
-= simple_form_for Comment.new do |f|
+= simple_form_for(Comment.new, html: { class: 'form-inline' }) do |f|
   =f.input :video_id, as: :hidden, input_html: { value: video.id }
   =f.input :text, label: false
   =f.submit "Comment"
