@@ -79,3 +79,5 @@ $(document).on('turbolinks:load', function() {
 });
 
 $(document).ready(readyDoc());
+
+readyDoc();
