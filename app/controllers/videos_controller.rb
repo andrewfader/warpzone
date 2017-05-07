@@ -1,8 +1,15 @@
 class VideosController < ApplicationController
   def create
-    @video = Video.create(video_params)
+    attributes = video_params
+    attributes.merge!(file: params["file"]) if !video_params["file"].present?
+    @video = Video.create(attributes)
     EncodeVideoJob.perform_later(@video)
     redirect_to videos_path
+  end
+
+  def show
+    @url = request.base_url
+    @video = Video.find(params[:id])
   end
 
   def index

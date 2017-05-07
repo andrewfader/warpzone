@@ -47,10 +47,10 @@ body {
         b.red {
           color: red !important;
         }
-        .comments,.votes,.middle_content {
+        .comments,.votes,.middle_content,.share {
           display: inline-block;
         }
-        .comments,.votes {
+        .comments,.votes,.share {
           min-height: 82px;
         }
         .votes {
@@ -60,6 +60,10 @@ body {
         }
         .comments {
           padding-top: 16px;
+          float: right;
+        }
+
+        .share {
           float: right;
         }
       }
@@ -78,4 +82,7 @@ body {
 }
 .commentlist {
   margin-bottom: 10px;
+}
+.twitter,.fb-share-button {
+  display: inline-block
 }

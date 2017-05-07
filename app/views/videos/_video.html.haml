@@ -1,6 +1,7 @@
+- gif_path = "/uploads/video/file/#{video.id}/#{video.filepath}"
 .gif
   - if video.filepath
-    =image_tag "/uploads/video/file/#{video.id}/#{video.filepath}", id: 'gif'
+    =image_tag gif_path, id: 'gif'
     =image_tag "b.gif", class: "blank hidden"
 
 .video.hidden
@@ -9,7 +10,7 @@
   .votes.btn.btn-default
     .nib
       - if current_user && current_user.votes.where(video_id: video.id, value: 1).present?
-        %b.red-="▲"
+        %b.red="▲"
       - else
         %b=link_to "▲",  video_upvote_path(video)
     .nib
@@ -17,7 +18,7 @@
       votes
     .nib
       - if current_user && current_user.votes.where(video_id: video.id, value: -1).present?
-        .red="▼"
+        %b.red="▼"
       - else
         %b=link_to "▼", video_downvote_path(video)
   .middle_content
@@ -33,6 +34,14 @@
     %b= video.comments.count
     %br
     comments
+  .share.btn.btn-default
+    = render 'videos/share'
+    %input{type: 'text', value: video_url(video)}
+    .reddit
+      %script{type: "text/javascript", src: "http://www.redditstatic.com/button/button1.js?url=#{video_url(video)}"}
+    .twitter
+      =link_to "Tweet", "https://twitter.com/intent/tweet?text=Check out my video on LB&url=#{video_url(video)}",  {class: 'twitter-share-button', data: { size: 'small' } }
+    .fb-share-button{data: {href: video_url(video), layout: 'button'}}
 .hidden.showcomments
   .commentlist
     = render video.comments

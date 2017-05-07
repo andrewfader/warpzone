@@ -1,0 +1,10 @@
+- gif_path = "/uploads/video/file/#{@video.id}/#{@video.filepath}"
+= content_for :head_tag do
+  %meta{ :property => 'og:title', :content => @video.title }
+  %meta{ :property => 'og:site_name', :content => 'Warpzone' }
+  %meta{ :property => 'og:url', :content => video_url(@video) }
+  %meta{ :property => 'og:description', :content => 'Video' }
+  %meta{ :property => 'og:image', :content => @url + gif_path }
+%ul
+  %li
+    =render @video
