@@ -1,4 +1,4 @@
 %ul
   - Video.all.sort_by(&:value).reverse.each do |video|
     %li
-      = render video
+      = render video, gif: gif

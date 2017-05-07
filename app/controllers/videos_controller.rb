@@ -8,11 +8,15 @@ class VideosController < ApplicationController
   end
 
   def show
+    check_gif
+
     @url = request.base_url
     @video = Video.find(params[:id])
   end
 
   def index
+    check_gif
+
     @videos = Video.all
   end
 
@@ -29,6 +33,14 @@ class VideosController < ApplicationController
   end
 
   private
+
+  def check_gif
+    if params[:gif] == 'off'
+      @gif = false
+    else
+      @gif = true
+    end
+  end
 
   def votes= votes
     if current_user

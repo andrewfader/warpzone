@@ -35,36 +35,43 @@ function readyDoc() {
     $(e.target).closest('.video').find('video')[0].pause();
     $(e.target).closest('.video').addClass('hidden');
   });
-  var scrollTop;
-  function gifFun() {
-    index = 0
-    $.map($('.gif'), function(gif) {
-      scrollTop = $('html').scrollTop();
-      gifTop = $(gif).offset().top - scrollTop
-      gifBottom = gifTop + $(gif).height()
-      windowBottom = scrollTop + $(window).height() + $(gif).height()
-      if (gifBottom > 0 || (gifTop > scrollTop && gifBottom < windowBottom)) {
-        $(gif).find('img#gif').removeClass('hidden')
-        $(gif).find('img.blank').addClass('hidden')
-        console.log("show " + index + "top:" + gifTop + "bottom: " + gifBottom + "sc" + scrollTop)
-      } else {
-        $(gif).find('img#gif').addClass('hidden')
-        $(gif).find('img.blank').removeClass('hidden')
-        console.log("hid " + index + "top:" + gifTop + "bottom: " + gifBottom + "wb" + windowBottom)
+  if ($('li').length > 1) {
+    var scrollTop;
+    function gifFun() {
+      index = 0
+      $.map($('.gif'), function(gif) {
+        scrollTop = $('html').scrollTop();
+        gifTop = $(gif).offset().top - scrollTop
+        gifBottom = gifTop + $(gif).height()
+        windowBottom = scrollTop + $(window).height() + $(gif).height()
+        if (gifBottom > 0 || (gifTop > scrollTop && gifBottom < windowBottom)) {
+          $(gif).find('img#gif').removeClass('hidden')
+          $(gif).find('img.blank').addClass('hidden')
+          console.log("show " + index + "top:" + gifTop + "bottom: " + gifBottom + "sc" + scrollTop)
+        } else {
+          $(gif).find('img#gif').addClass('hidden')
+          $(gif).find('img.blank').removeClass('hidden')
+          console.log("hid " + index + "top:" + gifTop + "bottom: " + gifBottom + "wb" + windowBottom)
+        }
+        index = index + 1
+      });
+    }
+    $(window).scroll(function() {
+      if($('.gif').length > 2) {
+        if (Math.abs(scrollTop - $('html').scrollTop()) > (($('.gif').first().height() - 10)/3 - 10)) {
+          gifFun()
+        }
       }
-      index = index + 1
     });
+
+    gifFun()
   }
 
-  $(window).scroll(function() {
-    if($('.gif').length > 2) {
-      if (Math.abs(scrollTop - $('html').scrollTop()) > (($('.gif').first().height() - 10)/3 - 10)) {
-        gifFun()
-      }
-    }
+  $('.share').on('click',function(e) {
+    $(e.target).closest('.share').find('.links').toggleClass('hidden')
+    $(e.target).closest('.share').find('.hideme').toggleClass('hidden')
   });
 
-  gifFun()
 }
 
 $(document).on('turbolinks:load', function() {

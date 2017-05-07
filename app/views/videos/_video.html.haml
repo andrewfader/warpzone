@@ -1,10 +1,9 @@
 - gif_path = "/uploads/video/file/#{video.id}/#{video.filepath}"
-.gif
+.gif{class: "#{gif ? "" : "hidden"}"}
   - if video.filepath
     =image_tag gif_path, id: 'gif'
     =image_tag "b.gif", class: "blank hidden"
-
-.video.hidden
+.video{class: "#{gif ? "hidden" : ""}"}
   %video{src: video.file, controls: true, disabled: true}
 .middlebar
   .votes.btn.btn-default
@@ -35,13 +34,16 @@
     %br
     comments
   .share.btn.btn-default
-    = render 'videos/share'
+    .hideme
+      %b Share
     %input{type: 'text', value: video_url(video)}
-    .reddit
-      %script{type: "text/javascript", src: "http://www.redditstatic.com/button/button1.js?url=#{video_url(video)}"}
-    .twitter
-      =link_to "Tweet", "https://twitter.com/intent/tweet?text=Check out my video on LB&url=#{video_url(video)}",  {class: 'twitter-share-button', data: { size: 'small' } }
-    .fb-share-button{data: {href: video_url(video), layout: 'button'}}
+    .hidden.links
+      = render 'videos/share'
+      .reddit
+        %script{type: "text/javascript", src: "http://www.redditstatic.com/button/button1.js?url=#{video_url(video)}"}
+      .twitter
+        =link_to "Tweet", "https://twitter.com/intent/tweet?text=Check out my video on LB&url=#{video_url(video)}",  {class: 'twitter-share-button', data: { size: 'small' } }
+      .fb-share-button{data: {href: "#{video_url(video)}?gif=off", layout: 'button'}}
 .hidden.showcomments
   .commentlist
     = render video.comments
